@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import Spinner from "./Spinner";
 
 function App() {
-  const [data, setdata] = useState('');
+  const [data, setdata] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [spinner, setSpinner] = useState("veri bekleniyor");
 
   const fetchData = async () => {
     const config = {
@@ -10,23 +13,32 @@ function App() {
         Accept: "application/json",
       },
     };
+
     try {
+      setLoading(true);
       const fetching = await fetch("https://icanhazdadjoke.com/", config);
       const response = await fetching.json();
-      setdata(response.joke)  
+      setdata(response.joke);
+      setLoading(false);
     } catch (error) {
-      new Error(error,'hata var')
+      console.log(error);
     }
-    
   };
 
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(data);
-  return <div className="App">
-    {data}
-  </div>;
+
+  if (loading) {
+    return <Spinner />;
+  }
+  return (
+    <div className="App">
+      <div className="box">
+        <h3 className="jokes">{data}</h3>
+      </div>
+    </div>
+  );
 }
 
 export default App;

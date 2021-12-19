@@ -1,9 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Oooh+Baby&display=swap");
 .App {
-  text-align: center;
   width: 100%;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+
+  background-image: linear-gradient(
+    to right bottom,
+    #051937,
+    #002768,
+    #1a2f9a,
+    #522fc7,
+    #9111ee
+  );
+}
+.box {
+  width: calc(100% / 2);
+  height: 300px;
+  background-color: #452d7c;
+  border-radius: 35px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  text-align: center;
+}
+.first-box {
+  width: 100%;
+  height: 100px;
+  background-color: red;
+  
 }
 
-
-
-
+.jokes {
+  font-family: "Oooh Baby", cursive;
+  font-size: 24px;
+  color: beige;
+  letter-spacing: 3px;
+}
