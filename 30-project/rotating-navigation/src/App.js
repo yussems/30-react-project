@@ -3,11 +3,10 @@ import { Button } from "@mui/material";
 function App() {
   return (
     <div className="App">
-      <label htmlFor="">
-        <input type="file" multiple />
-
-        <Button variant="contained" color="secondary">
-          selam{" "}
+      <label htmlFor="contained-button-file">
+        <input style={{display:'none'}} accept="image/*" id="contained-button-file" multiple type="file" />
+        <Button variant="contained" component="span">
+          Upload
         </Button>
       </label>
     </div>
