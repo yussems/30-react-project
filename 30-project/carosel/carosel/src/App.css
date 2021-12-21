@@ -11,6 +11,12 @@ body{
   justify-content: center;
   
 }
+
+.image-container {
+  display: flex;
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
+}
 .carousel {
   height: 530px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -19,17 +25,14 @@ body{
 
 
 }
-.image-container {
-  display: flex;
-  transform: translateX(0);
-  transition: transform 0.5s ease-in-out;
-}
+
 .button-container {
   display: flex;
   justify-content: space-between;
 }
 .btn {
   background-color: rebeccapurple;
+  font-family: var(--font-oops);
   color: #fff;
   border: none;
   padding: 0.5rem;
