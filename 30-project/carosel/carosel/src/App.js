@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-expressions */
 import { useEffect, useState } from "react";
 import "./App.css";
@@ -13,16 +14,19 @@ function App() {
   };
   useEffect(() => {
     const interval = setInterval(() => setNext((item) => item + 1), 3000);
-
-   
+    if(handlePrev){
+      clearInterval(interval)
+    }
+    if(handleNext){
+      clearInterval(interval)
+    }
   }, []);
-
+  
   if (next > data.length - 1) {
     setNext(0);
   } else if (next < 0) {
     setNext(data.length - 1);
   }
-
   return (
     <div className="carousel">
       <div
@@ -34,11 +38,11 @@ function App() {
         })}
       </div>
       <div className="button-container">
-        <button onClick={handlePrev} className="btn">
+        <button  onClick={handlePrev} className="btn">
           Prev
         </button>
         {next}
-        <button onClick={handleNext} className="btn">
+        <button  onClick={handleNext} className="btn">
           Next
         </button>
       </div>
