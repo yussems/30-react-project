@@ -6,22 +6,25 @@ import Carosel from "./Carosel";
 import { data } from "./data";
 function App() {
   const [next, setNext] = useState(0);
+  const [btn, setBtn] = useState(false);
+
+  useEffect(() => {
+    if(btn){
+      return
+    }
+    const interval = setInterval(() => setNext((item) => item + 1), 2000);
+    
+    return () => clearInterval(interval)
+  }, [btn]);
+  
   const handleNext = () => {
     setNext((item) => item - 1);
+    setBtn(true);
   };
   const handlePrev = () => {
+    setBtn(true);
     setNext((item) => item - 1);
   };
-  useEffect(() => {
-    const interval = setInterval(() => setNext((item) => item + 1), 3000);
-    if(handlePrev){
-      clearInterval(interval)
-    }
-    if(handleNext){
-      clearInterval(interval)
-    }
-  }, []);
-  
   if (next > data.length - 1) {
     setNext(0);
   } else if (next < 0) {
@@ -38,11 +41,11 @@ function App() {
         })}
       </div>
       <div className="button-container">
-        <button  onClick={handlePrev} className="btn">
+        <button onClick={handlePrev} className="btn">
           Prev
         </button>
         {next}
-        <button  onClick={handleNext} className="btn">
+        <button onClick={handleNext} className="btn">
           Next
         </button>
       </div>
