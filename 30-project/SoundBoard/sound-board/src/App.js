@@ -1,13 +1,16 @@
 import "./App.css";
 import Player from "./Player";
 import { data } from "./data";
+import { useRef, useState, useEffect } from "react";
 
 function App() {
+  const [sound, setSound] = useState(data);
+  
   return (
     <div className="App">
-      {data.map((item) => {
+      {sound.map((item) => {
         const { id, name, sound } = item;
-        return <Player key={id.toString()} name={name} sound={sound} />;
+        return <Player  key={id.toString()} name={name} sound={sound} />;
       })}
     </div>
   );

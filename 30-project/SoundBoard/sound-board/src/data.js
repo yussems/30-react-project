@@ -10,31 +10,37 @@ export const data = [
     {
         id:1,
         name:'dunstep',
-        sound: dubstep
+        sound: dubstep,
+        isPlaying: false
     },
     {
         id:2,
         name:'epic',
-        sound: epic
+        sound: epic,
+        isPlaying: false
     },
     {
         id:3,
         name:'extremeaction',
-        sound: extrameaction
+        sound: extrameaction,
+        isPlaying: false
     },
     {
         id:4,
         name:'instrict',
-        sound: instrict
+        sound: instrict,
+        isPlaying: false
     },
     {
         id:5,
         name:'smile',
-        sound: smile
+        sound: smile,
+        isPlaying: false
     },
     {
         id:6,
         name:'Jazz',
-        sound: jazz
+        sound: jazz,
+        isPlaying: false
     },
 ]
