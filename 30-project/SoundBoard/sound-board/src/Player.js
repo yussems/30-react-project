@@ -8,18 +8,18 @@ function Player({ name, sound }) {
   
   
 const audioPlayer=() => {
-  stop()
   audioRef.current.play()
-
 }
 
-const stop  = () => {
-    audioRef.current.pause()
-}
+useEffect(() => {
+  audioRef.current.pause()
+}, [])
+
+
 
 return (
     <div className="audioStyle">
-      <audio onPause={stop} ref={audioRef} src={sound}></audio>
+      <audio  ref={audioRef} src={sound}></audio>
       <button onClick={audioPlayer}>{name}</button>
     </div>
   );
