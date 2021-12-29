@@ -19,6 +19,8 @@ function App() {
   return (
     <div className="App">
       <Question
+        data={data}
+        number={number}
         setScore={setScore}
         setNumber={setNumber}
         questions={data[number]}
