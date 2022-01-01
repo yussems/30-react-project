@@ -4,23 +4,27 @@ import Form from "./component/Form";
 import { fetcdata } from "./fetchData";
 
 function App() {
-  const [userName, setUserName] = useState('')
+  const [userName, setUserName] = useState("yussems");
+  const [data, setData] = useState({})
   useEffect(() => {
-    fetcdata(userName).then((data) => console.log(data));
-  }, []);
+    if (userName) {
+      fetcdata(userName).then((data) => setData(data));
+    }
+  }, [userName]);
 
 
-  console.log(userName);
+  const {avatar_url,name,following,followers,public_repos} = data
+  console.log(data);
   return (
     <div className="container">
       <Form setuserName={setUserName} />
       <main>
         <div className="card">
           <div>
-            <img className="avatar" src="" alt="avatar" />
+            <img className="avatar" src={avatar_url} alt="avatar" />
           </div>
           <div className="userinfo">
-            <h2>faruk turkoglu</h2>
+            <h2>{name}</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
               veritatis adipisci natus earum nam vel accusamus quo impedit,
@@ -29,13 +33,13 @@ function App() {
             </p>
             <ul>
               <li>
-                300<strong>followers</strong>
+                {followers}<strong>Followers</strong>
               </li>
               <li>
-                300<strong>following</strong>
+                {following}<strong>Following</strong>
               </li>
               <li>
-                300<strong>repos</strong>
+                {public_repos}<strong>Repos</strong>
               </li>
             </ul>
             <div id="repos">
