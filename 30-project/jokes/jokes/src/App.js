@@ -18,6 +18,7 @@ function App() {
       setLoading(true);
       const fetching = await fetch("https://icanhazdadjoke.com/", config);
       const response = await fetching.json();
+      console.log(response);
       setdata(response.joke);
       setLoading(false);
     } catch (error) {
@@ -29,6 +30,11 @@ function App() {
     fetchData();
   }, []);
 
+  const handleClick = () => {
+    fetchData();
+
+  }
+
   if (loading) {
     return <Spinner />;
   }
@@ -36,6 +42,7 @@ function App() {
     <div className="App">
       <div className="box">
         <h3 className="jokes">{data}</h3>
+        <button onClick={handleClick}>new Jokes</button>
       </div>
     </div>
   );

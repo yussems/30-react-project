@@ -5,7 +5,10 @@ import "./App.css";
 function Player({ name, sound }) {
   const audioRef = useRef(null);
   const [stop, setStop] = useState(false);
-  const audioPlayer = () => {
+
+
+  console.log('ali kaan')
+  const audioPlayer = (e) => {
     setStop(true);
     audioRef.current.play();
     if (stop) {
