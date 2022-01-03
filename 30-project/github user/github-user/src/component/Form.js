@@ -7,13 +7,14 @@ function Form({ setuserName }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setuserName(name);
-    setName("");
+      setName('')
   };
   console.log(name);
   return (
     <>
       <form onSubmit={handleSubmit} className="userform">
         <input
+          value={name}
           onChange={(e) => setName(e.target.value)}
           type="text"
           placeholder="Search for github"
