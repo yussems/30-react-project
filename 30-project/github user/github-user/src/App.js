@@ -7,28 +7,42 @@ import { fetcdata } from "./fetchData";
 function App() {
   const [userName, setUserName] = useState("");
   const [data, setData] = useState({});
-  const [error, setError] = useState(false);
-  
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     if (userName) {
-      fetcdata(userName).then((data) => setData(data))
+      setError(null);
+      fetcdata(userName)
+        .then((data) => setData(data))
+        .catch((e) => setError(e));
     }
   }, [userName]);
-
- 
+  console.log(userName);
 
   return (
     <div className="container">
       <Form setuserName={setUserName} />
+
       <main>
-        <div className="card">
-          <div>
-            <img className="avatar" src={data.avatar_url || 'https://www.w3schools.com/howto/img_avatar2.png'} alt="avatar" />
-          </div>
-          <div className="userinfo">
-            <Bio data={data} />
-          </div>
+          {error ? (
+            <h4>User is not found</h4>
+          ) : (
+            <div className="card">
+              <div>
+                <img
+                  className="avatar"
+                  src={
+                    data.avatar_url ||
+                    "https://www.w3schools.com/howto/img_avatar2.png"
+                  }
+                  alt="avatar"
+                />
+              </div>
+              <div className="userinfo">
+                <Bio data={data} />
+              </div>
         </div>
+          )}
       </main>
     </div>
   );

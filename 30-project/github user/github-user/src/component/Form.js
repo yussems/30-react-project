@@ -9,7 +9,6 @@ function Form({ setuserName }) {
     setuserName(name);
       setName('')
   };
-  console.log(name);
   return (
     <>
       <form onSubmit={handleSubmit} className="userform">
