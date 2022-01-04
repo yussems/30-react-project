@@ -8,15 +8,12 @@ function App() {
   const [ontext, setOntext] = useState("");
 
   useEffect(() => {
-
     if (ontext) {
-     setTimeout(() => {
+      setTimeout(() => {
         writer();
-      }, 300 / inputValue);
+      }, 1000 / inputValue);
     }
-
-
-  }, [num, ontext]);
+  }, [ontext, num]);
 
   const writer = () => {
     if (num > ontext.length) {
@@ -24,34 +21,34 @@ function App() {
     }
     setnum(() => num + 1);
     setwritertext(ontext.slice(0, num));
-    console.log(num);
   };
 
   const handleClick = () => {
     setOntext(changetext);
-    setChangeText('')
-
-
-  }
+    setChangeText("");
+  };
+  console.log(changetext);
 
   return (
     <div className="App">
       <div className="container">
-        <p>{writertext}</p>
+        <h1>{writertext}</h1>
         <input
+          placeholder="write to text"
+
+          className="text"
           type="text"
           value={changetext}
           onChange={(e) => setChangeText(e.target.value)}
         />
         <input
-          placeholder="write to text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           type="number"
           min={1}
           max={5}
         />
-        <button onClick={handleClick}> change text</button>
+        <button disabled={changetext ? false :true} onClick={handleClick}> {changetext ? 'Change Text' : 'Disabled'}</button>
       </div>
     </div>
   );
