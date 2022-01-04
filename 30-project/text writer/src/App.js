@@ -13,7 +13,7 @@ function App() {
         writer();
       }, 1000 / inputValue);
     }
-  }, [ontext, num]);
+  }, [ontext, num,inputValue]);
 
   const writer = () => {
     if (num > ontext.length) {
@@ -27,7 +27,6 @@ function App() {
     setOntext(changetext);
     setChangeText("");
   };
-  console.log(changetext);
 
   return (
     <div className="App">
@@ -48,7 +47,7 @@ function App() {
           min={1}
           max={5}
         />
-        <button disabled={changetext ? false :true} onClick={handleClick}> {changetext ? 'Change Text' : 'Disabled'}</button>
+        <button disabled={changetext ? false :true} onClick={handleClick}> {changetext ? 'Play Text' : 'Disabled'}</button>
       </div>
     </div>
   );
