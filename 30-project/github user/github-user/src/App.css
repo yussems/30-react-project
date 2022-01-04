@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 body {
-  background-color: blueviolet;
+  background-color: #51087E;
   color: white;
   display: flex;
   justify-content: center;
@@ -27,7 +27,7 @@ body {
   background-color: #fff;
   border: none;
   border-radius: 10px;
-  color: wheat;
+  color: #4c2885;
   padding: 1rem;
   margin-bottom: 2rem;
   font-family: inherit;
