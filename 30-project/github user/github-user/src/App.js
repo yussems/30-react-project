@@ -9,6 +9,8 @@ function App() {
   const [data, setData] = useState({});
   const [error, setError] = useState(null);
 
+
+
   useEffect(() => {
     if (userName) {
       setError(null);
@@ -17,7 +19,9 @@ function App() {
         .catch((e) => setError(e));
     }
   }, [userName]);
-  console.log(userName);
+
+
+  
 
   return (
     <div className="container">
@@ -43,6 +47,8 @@ function App() {
               </div>
         </div>
           )}
+
+
       </main>
     </div>
   );

@@ -6,7 +6,12 @@ async function fetcdata(username) {
  
     const datas = await axios.get(apiUri + username);
     const {data} = datas
+
+    console.log(data);
     return data;
 }
 
 export { fetcdata };
+
+
+
