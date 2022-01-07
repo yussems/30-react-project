@@ -7,7 +7,6 @@ function Player({ name, sound }) {
   const [stop, setStop] = useState(false);
 
 
-  console.log('ali kaan')
   const audioPlayer = (e) => {
     setStop(true);
     audioRef.current.play();
