@@ -7,6 +7,7 @@ function App() {
   const [offsetX, setoffSetX] = useState(null);
   const [color, setcolor] = useState("");
   const [clean, setClean] = useState(false);
+  const [circle, setCircle] = useState(false);
 
   const [offsetY, setoffSetY] = useState(null);
   const [isPressed, setIsPressed] = useState(false);
@@ -15,28 +16,25 @@ function App() {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
 
-    // context.fillStyle = "green";
-    // context.fillRect(400, 25, 100, 100);
-    // context.strokeRect(250, 250, 100, 100);
+    const circleMaker = (x,y) => {
+      context.beginPath();
+      context.strokeStyle = color;
+      context.arc(x, y, size * 20, 0, 2 * Math.PI);
+      context.stroke();
+    };
 
-    // const drawLine = (x, y) => {
-    //   context.strokeStyle = "red";
-    //   context.lineWidth = size;
-    //   context.lineTo(x, y);
-    //   context.moveTo(x, y);
-    //   context.beginPath();
-    //   context.stroke();
-    // };
-
-    const drawClean = (x,y) => {
+    const drawClean = (x, y) => {
       context.beginPath();
       context.arc(x, y, 25, 0, Math.PI * 2);
       context.fillStyle = "white";
       context.fill();
     };
+    if (circle) {
+      return circleMaker(offsetX,offsetY)
+    }
 
     if (clean) {
-     return  drawClean(offsetX,offsetY);
+      return drawClean(offsetX, offsetY);
     }
 
     const draw = (x, y) => {
@@ -52,24 +50,25 @@ function App() {
     if (isPressed) {
       draw(offsetX, offsetY);
     }
-  }, [offsetY, offsetX, size, isPressed, color, clean]);
+  }, [offsetY, offsetX, size, color, clean, isPressed,circle]);
 
   // fillRect(left,top,width,height)
 
   const handleMouseDown = ({ nativeEvent }) => {
+    setIsPressed(true);
     setoffSetX(nativeEvent.offsetX);
     setoffSetY(nativeEvent.offsetY);
-    setIsPressed(true);
     console.log(offsetX, offsetY);
     console.log(isPressed);
   };
 
-  const handleMouseUp = () => {
+  const handleMouseUp = (e) => {
+    console.log(e);
     setoffSetX(null);
     setoffSetY(null);
     setIsPressed(false);
     console.log(offsetX, offsetY);
-    console.log(isPressed);
+    console.log(isPressed, "222222222222");
   };
 
   const handleMouseMove = ({ nativeEvent }) => {
@@ -82,6 +81,9 @@ function App() {
 
   const handleEraser = () => {
     setClean(!clean);
+  };
+  const handleCircle = () => {
+    setCircle(!circle);
   };
 
   return (
@@ -104,6 +106,7 @@ function App() {
           onChange={(e) => setSize(e.target.value)}
         />
         <button onClick={handleEraser}>eraser</button>
+        <button onClick={handleCircle}>Circle</button>
       </div>
 
       <canvas
